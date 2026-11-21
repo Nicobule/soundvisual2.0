@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#09090a">
+<title>Sound Visual Art</title>
+<meta name="description" content="Trasforma un'immagine in arte animata e interattiva: ASCII, Braille, esagoni, glitch, blob tracking. Le tue immagini restano sul tuo dispositivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app" data-sheet="closed">
+
+  <header id="bar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><rect x="3" y="3" width="4" height="4" rx="1"/><rect x="10" y="3" width="4" height="4" rx="1" opacity=".55"/><rect x="17" y="3" width="4" height="4" rx="1" opacity=".25"/><rect x="3" y="10" width="4" height="4" rx="1" opacity=".55"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="17" y="10" width="4" height="4" rx="1" opacity=".55"/><rect x="3" y="17" width="4" height="4" rx="1" opacity=".25"/><rect x="10" y="17" width="4" height="4" rx="1" opacity=".55"/><rect x="17" y="17" width="4" height="4" rx="1"/></g></svg>
+      <span class="brand-name">Sound Visual Art</span>
+    </div>
+    <div class="spacer"></div>
+    <button id="btnImage" class="btn primary" title="Carica un'immagine (I)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+      <span class="lbl">Carica immagine</span>
+    </button>
+    <button id="btnPause" class="iconbtn" title="Pausa (spazio)" aria-label="Pausa" aria-pressed="false">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
+    </button>
+    <button id="btnSave" class="btn" title="Salva un'immagine PNG (S)" aria-label="Salva PNG">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+      <span class="lbl">PNG</span>
+    </button>
+    <button id="btnRec" class="btn rec" title="Registra un video (R)" aria-label="Registra un video">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="lbl" id="recLbl">Registra</span>
+    </button>
+    <button id="btnZen" class="iconbtn" title="Nascondi i controlli (H)" aria-label="Nascondi i controlli">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s3.5-6.5 9-6.5S21 12 21 12s-3.5 6.5-9 6.5S3 12 3 12z"/><circle cx="12" cy="12" r="2.6"/></svg>
+    </button>
+  </header>
+
+  <aside id="dock" aria-label="Controlli">
+    <nav id="tabs" role="tablist" aria-label="Sezioni dei controlli"></nav>
+    <div id="panels"></div>
+  </aside>
+
+  <main id="stage">
+    <canvas id="c" aria-label="Immagine animata. Muovi il cursore per agitare i segni, tocca o clicca per un'onda."></canvas>
+    <div id="empty" class="show">
+      <div class="card">
+        <div class="mark" aria-hidden="true">░▒▓█▓▒░ ▒▓█▓▒ ░▒▓█▓▒░</div>
+        <h1>Una foto, in movimento</h1>
+        <p>Carica un'immagine e trasformala in ASCII, Braille, esagoni o vetrate. Muovi il cursore per agitarla. La tua immagine resta sul dispositivo: non viene caricata da nessuna parte.</p>
+        <div class="stack">
+          <button id="emptyPick" class="btn primary big">Carica un'immagine</button>
+          <button id="emptySample" class="btn big">Prova con un esempio</button>
+        </div>
+        <small class="hint">Puoi anche trascinare un file su questa pagina.</small>
+      </div>
+    </div>
+    <button id="zenOff" class="btn" aria-label="Mostra i controlli">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span class="lbl">Controlli</span>
+    </button>
+  </main>
+
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<input id="imageFile" type="file" accept="image/*" hidden>
+<input id="audioFile" type="file" accept="audio/*" hidden>
+<script src="js/engine.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
